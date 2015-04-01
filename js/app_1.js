@@ -18,3 +18,9 @@ var featureLayer = L.mapbox.featureLayer().loadURL(dataFileToAdd).addTo(map)
 featureLayer.on('ready',function(){this.setStyle({'color':'#ec008c','fillColor':'#ec00c', 'weight':4, 'opacity':.7});
 map.fitBounds(featureLayer.getBounds());
 });
+
+featureLayer.on('ready', function(){
+  this.eachLayer(function(layer){
+    layer.bindPopup('Hi, Im the park called'+ layer.feature.properties.NAME);
+  })
+})
